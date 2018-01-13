@@ -18,13 +18,14 @@ class App extends Component {
             <Router>
                 <div>
                     <div class="nav">
-                            <a><Link to={'/'}>Home</Link></a>
-                            <a><Link to={'/room'}>App</Link></a>
+                        <Link to={'/'}>Home</Link>s
+                        <Link to={'/room'}>App</Link>
                     </div>
                     <Switch>
                         <Route exact path='/' component={UserNameSet} />
                         <Route exact path='/room' component={Messenger} />
                     </Switch>
+                    <div class="footer"></div>
                 </div>
             </Router>
         );
