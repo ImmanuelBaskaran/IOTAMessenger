@@ -19,10 +19,14 @@ class App extends Component {
         return (
             <Router>
                 <div>
+
                     <div class="nav">
                             <a><Link to={'/'}>Home</Link></a>
                             <a><Link to={'/room'}>App</Link></a>
                     </div>
+                    <header className="App-header">
+                        <h1 className="App-title">Welcome to the IOTA MAM encrypter and decrypter</h1>
+                    </header>
                     <Switch>
                         <Route exact path='/' component={UserNameSet} />
                         <Route exact path='/room' component={Messenger} />
