@@ -21,8 +21,8 @@ class App extends Component {
                 <div>
 
                     <div class="nav">
-                            <a><Link to={'/'}>Home</Link></a>
-                            <a><Link to={'/room'}>App</Link></a>
+                        <Link to={'/'}>Home</Link>s
+                        <Link to={'/room'}>App</Link>
                     </div>
                     <header className="App-header">
                         <h1 className="App-title">Welcome to the IOTA MAM encrypter and decrypter</h1>
@@ -31,6 +31,7 @@ class App extends Component {
                         <Route exact path='/' component={UserNameSet} />
                         <Route exact path='/room' component={Messenger} />
                     </Switch>
+                    <div class="footer"></div>
                 </div>
             </Router>
         );
