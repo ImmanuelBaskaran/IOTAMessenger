@@ -34780,10 +34780,10 @@ var App = function (_Component) {
                     'div',
                     null,
                     _react2.default.createElement(
-                        'ul',
-                        null,
+                        'div',
+                        { 'class': 'nav' },
                         _react2.default.createElement(
-                            'li',
+                            'a',
                             null,
                             _react2.default.createElement(
                                 _reactRouterDom.Link,
@@ -34792,7 +34792,7 @@ var App = function (_Component) {
                             )
                         ),
                         _react2.default.createElement(
-                            'li',
+                            'a',
                             null,
                             _react2.default.createElement(
                                 _reactRouterDom.Link,
@@ -44737,7 +44737,7 @@ module.exports = Address;
 /* 139 */
 /***/ (function(module, exports) {
 
-module.exports = {"_from":"iota.lib.js","_id":"iota.lib.js@0.4.6","_inBundle":false,"_integrity":"sha1-R6/cA9V8f1XS9Y8GjbSS32vG6bs=","_location":"/iota.lib.js","_phantomChildren":{},"_requested":{"type":"tag","registry":true,"raw":"iota.lib.js","name":"iota.lib.js","escapedName":"iota.lib.js","rawSpec":"","saveSpec":null,"fetchSpec":"latest"},"_requiredBy":["#USER","/"],"_resolved":"https://registry.npmjs.org/iota.lib.js/-/iota.lib.js-0.4.6.tgz","_shasum":"47afdc03d57c7f55d2f58f068db492df6bc6e9bb","_spec":"iota.lib.js","_where":"D:\\Documents\\GitHub\\IOTA-Mam-POC","author":{"name":"Dominik Schiener","url":"IOTA Foundation"},"bugs":{"url":"https://github.com/iotaledger/iota.lib.js/issues"},"bundleDependencies":false,"dependencies":{"async":"^2.5.0","bignumber.js":"^4.1.0","crypto-js":"^3.1.9-1","xmlhttprequest":"^1.8.0"},"deprecated":false,"description":"Javascript Library for IOTA","devDependencies":{"bower":">=1.8.0","browserify":">=14.1.0","chai":"^4.0.2","del":"^3.0.0","gulp":"^3.9.1","gulp-jshint":"^2.0.2","gulp-nsp":">=2.4.2","gulp-rename":">=1.2.2","gulp-replace":"^0.6.1","gulp-uglify":"^3.0.0","jshint":"^2.9.4","mocha":"^3.2.0","vinyl-buffer":"^1.0.0","vinyl-source-stream":"^1.1.0"},"homepage":"https://github.com/iotaledger/iota.lib.js#readme","keywords":["iota","tangle","library","browser","javascript","nodejs","API"],"license":"MIT","main":"./lib/iota.js","name":"iota.lib.js","repository":{"type":"git","url":"git+https://github.com/iotaledger/iota.lib.js.git"},"scripts":{"build":"gulp","test":"mocha"},"version":"0.4.6"}
+module.exports = {"_args":[["iota.lib.js@0.4.6","C:\\Users\\clark\\Documents\\GitHub\\IOTAMessenger"]],"_from":"iota.lib.js@0.4.6","_id":"iota.lib.js@0.4.6","_inBundle":false,"_integrity":"sha1-R6/cA9V8f1XS9Y8GjbSS32vG6bs=","_location":"/iota.lib.js","_phantomChildren":{},"_requested":{"type":"version","registry":true,"raw":"iota.lib.js@0.4.6","name":"iota.lib.js","escapedName":"iota.lib.js","rawSpec":"0.4.6","saveSpec":null,"fetchSpec":"0.4.6"},"_requiredBy":["/"],"_resolved":"https://registry.npmjs.org/iota.lib.js/-/iota.lib.js-0.4.6.tgz","_spec":"0.4.6","_where":"C:\\Users\\clark\\Documents\\GitHub\\IOTAMessenger","author":{"name":"Dominik Schiener","url":"IOTA Foundation"},"bugs":{"url":"https://github.com/iotaledger/iota.lib.js/issues"},"dependencies":{"async":"^2.5.0","bignumber.js":"^4.1.0","crypto-js":"^3.1.9-1","xmlhttprequest":"^1.8.0"},"description":"Javascript Library for IOTA","devDependencies":{"bower":">=1.8.0","browserify":">=14.1.0","chai":"^4.0.2","del":"^3.0.0","gulp":"^3.9.1","gulp-jshint":"^2.0.2","gulp-nsp":">=2.4.2","gulp-rename":">=1.2.2","gulp-replace":"^0.6.1","gulp-uglify":"^3.0.0","jshint":"^2.9.4","mocha":"^3.2.0","vinyl-buffer":"^1.0.0","vinyl-source-stream":"^1.1.0"},"homepage":"https://github.com/iotaledger/iota.lib.js#readme","keywords":["iota","tangle","library","browser","javascript","nodejs","API"],"license":"MIT","main":"./lib/iota.js","name":"iota.lib.js","repository":{"type":"git","url":"git+https://github.com/iotaledger/iota.lib.js.git"},"scripts":{"build":"gulp","test":"mocha"},"version":"0.4.6"}
 
 /***/ }),
 /* 140 */
@@ -44807,25 +44807,10 @@ var UserNameSet = function (_Component) {
     }, {
         key: "send",
         value: function send() {
-            if (!this.init) {
-                this.mam = window.Mam;
-                this.mamstate = this.mam.init(this.iotajs);
-                this.init = true;
-            }
-
-            var packet = this.state.value;
-            var trytes = this.iotajs.utils.toTrytes(JSON.stringify(packet));
-            var message = this.mam.create(this.mamstate, trytes);
-            this.mamstate = message.state;
-            this.mam.attach(message.payload, message.address);
-            this.setState(this.setState({ address: message.root }));
-        }
-    }, {
-        key: "fetch",
-        value: async function fetch() {
-            var resp = await window.Mam.fetch(this.state.fetch, 'public');
-            var text = this.iotajs.utils.fromTrytes(resp.messages[0]);
-            this.setState(this.setState({ message: text }));
+            window.MyVars = {
+                username: this.state.value
+            };
+            console.log(window);
         }
     }, {
         key: "componentDidMount",
@@ -44862,11 +44847,6 @@ var UserNameSet = function (_Component) {
                         _react2.default.createElement("input", { type: "text", name: "value", value: this.state.value, onChange: this.handleChange })
                     ),
                     _react2.default.createElement("input", { type: "submit", value: "Submit" })
-                ),
-                _react2.default.createElement(
-                    "p",
-                    null,
-                    this.state.address
                 )
             );
         }

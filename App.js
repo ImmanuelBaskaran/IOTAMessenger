@@ -17,10 +17,10 @@ class App extends Component {
         return (
             <Router>
                 <div>
-                    <ul>
-                        <li><Link to={'/'}>Home</Link></li>
-                        <li><Link to={'/room'}>App</Link></li>
-                    </ul>
+                    <div class="nav">
+                            <a><Link to={'/'}>Home</Link></a>
+                            <a><Link to={'/room'}>App</Link></a>
+                    </div>
                     <Switch>
                         <Route exact path='/' component={UserNameSet} />
                         <Route exact path='/room' component={Messenger} />

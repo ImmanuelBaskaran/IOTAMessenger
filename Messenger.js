@@ -77,7 +77,7 @@ class Messenger extends Component {
                 <form onSubmit={this.handleSubmit}>
                     <label>
                         Message:
-                        <input type="text" name= "value" value={this.state.value} onChange={this.handleChange} />
+                        <input type="text" name= "value" value={this.state.value} onChange={this.handleChange} required/>
                     </label>
                     <input type="submit" value="Submit" />
                 </form>
