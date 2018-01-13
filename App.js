@@ -7,10 +7,12 @@ import UserNameSet from './UserNameSet'
 class App extends Component {
 
     componentWillMount() {
-        window.MyVars = {
-            username:undefined
+        const IOTA = require('iota.lib.js');
+        window.User = {
+            username:undefined,
         };
-        console.log(window)
+        window.iota = new IOTA({provider:`https://testnet140.tangle.works:443/`});
+
     }
 
     render() {
