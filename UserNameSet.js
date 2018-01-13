@@ -9,7 +9,7 @@ class UserNameSet extends Component {
         this.iotajs = "";
         this.mamstate = "";
         this.init = false;
-        this.state = {value: '',address: '',fetch:'',message:''};
+        this.state = {value: '',key: '',fetch:'',message:''};
 
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -32,18 +32,26 @@ class UserNameSet extends Component {
         event.preventDefault();
         this.fetch();
     }
-
     send(){
         window.MyVars = {
-            username:this.state.value
+            username:this.state.value,
         };
-        console.log(window)
+        window.mamstate = window.Mam.init(window.iota,"AJGCFUNURGYBEILHQGZYFGZUAEFDBYNBLJNNGBILLGBJNWEWNLJPLVXLZVZFG9MAXMLLRWYQSVOZFWZXX");
+       // window.mamstate = window.Mam.init(window.iota);
+        let packet = "";
+        let trytes = this.iotajs.utils.toTrytes(JSON.stringify(packet));
+        let message = window.Mam.create(window.mamstate, trytes);
+        window.mamIndex = window.Mam.getRoot(window.mamstate);
+        console.log(window.mamstate);
     }
 
 
     componentDidMount() {
-        const IOTA = require('iota.lib.js');
-        this.iotajs =new IOTA({ provider: `https://testnet140.tangle.works:443/` });
+        this.iotajs = window.iota;
+    }
+
+    updateMamState(){
+     //   if(window.Mam.state.index);
     }
 
 
@@ -61,14 +69,15 @@ class UserNameSet extends Component {
                 <br/>
                 <form onSubmit={this.handleSubmit}>
                     <label>
-                        Message:
+                        Username:
                         <input type="text" name= "value" value={this.state.value} onChange={this.handleChange} />
+                    </label>
+                    <label>
+                        Username:
+                        <input type="text" name= "key" value={this.state.key} onChange={this.handleChange} />
                     </label>
                     <input type="submit" value="Submit" />
                 </form>
-
-
-
             </div>
         );
     }
