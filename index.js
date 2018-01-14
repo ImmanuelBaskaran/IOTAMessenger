@@ -34724,29 +34724,25 @@ var App = function (_Component) {
                         'div',
                         { 'class': 'nav' },
                         _react2.default.createElement(
-                            'a',
+                            'p',
                             null,
-                            _react2.default.createElement(
-                                _reactRouterDom.Link,
-                                { to: '/' },
-                                'Home'
-                            )
-                        ),
-                        _react2.default.createElement(
-                            'a',
-                            null,
-                            _react2.default.createElement(
-                                _reactRouterDom.Link,
-                                { to: '/room' },
-                                'App'
-                            )
+                            'pBy Immanuel Baskeran & Tim Clarkson'
                         )
                     ),
                     _react2.default.createElement(
-                        _reactRouterDom.Switch,
-                        null,
-                        _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/', component: _UserNameSet2.default }),
-                        _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/room', component: _Messenger2.default })
+                        'div',
+                        { 'class': 'container' },
+                        _react2.default.createElement(
+                            _reactRouterDom.Switch,
+                            null,
+                            _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/', component: _UserNameSet2.default }),
+                            _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/room', component: _Messenger2.default })
+                        ),
+                        _react2.default.createElement(
+                            'div',
+                            { 'class': 'footer' },
+                            'By Immanuel Baskeran & Tim Clarkson'
+                        )
                     )
                 )
             );
@@ -34898,7 +34894,7 @@ var Messenger = function (_Component) {
                         "label",
                         null,
                         "Message:",
-                        _react2.default.createElement("input", { type: "text", name: "value", value: this.state.value, onChange: this.handleChange })
+                        _react2.default.createElement("input", { type: "text", name: "value", value: this.state.value, onChange: this.handleChange, required: true })
                     ),
                     _react2.default.createElement("input", { type: "submit", value: "Submit" })
                 ),
@@ -44880,126 +44876,5 @@ module.exports = Address;
 
 module.exports = {"_args":[["iota.lib.js@0.4.6","C:\\Users\\clark\\Documents\\GitHub\\IOTAMessenger"]],"_from":"iota.lib.js@0.4.6","_id":"iota.lib.js@0.4.6","_inBundle":false,"_integrity":"sha1-R6/cA9V8f1XS9Y8GjbSS32vG6bs=","_location":"/iota.lib.js","_phantomChildren":{},"_requested":{"type":"version","registry":true,"raw":"iota.lib.js@0.4.6","name":"iota.lib.js","escapedName":"iota.lib.js","rawSpec":"0.4.6","saveSpec":null,"fetchSpec":"0.4.6"},"_requiredBy":["/"],"_resolved":"https://registry.npmjs.org/iota.lib.js/-/iota.lib.js-0.4.6.tgz","_spec":"0.4.6","_where":"C:\\Users\\clark\\Documents\\GitHub\\IOTAMessenger","author":{"name":"Dominik Schiener","url":"IOTA Foundation"},"bugs":{"url":"https://github.com/iotaledger/iota.lib.js/issues"},"dependencies":{"async":"^2.5.0","bignumber.js":"^4.1.0","crypto-js":"^3.1.9-1","xmlhttprequest":"^1.8.0"},"description":"Javascript Library for IOTA","devDependencies":{"bower":">=1.8.0","browserify":">=14.1.0","chai":"^4.0.2","del":"^3.0.0","gulp":"^3.9.1","gulp-jshint":"^2.0.2","gulp-nsp":">=2.4.2","gulp-rename":">=1.2.2","gulp-replace":"^0.6.1","gulp-uglify":"^3.0.0","jshint":"^2.9.4","mocha":"^3.2.0","vinyl-buffer":"^1.0.0","vinyl-source-stream":"^1.1.0"},"homepage":"https://github.com/iotaledger/iota.lib.js#readme","keywords":["iota","tangle","library","browser","javascript","nodejs","API"],"license":"MIT","main":"./lib/iota.js","name":"iota.lib.js","repository":{"type":"git","url":"git+https://github.com/iotaledger/iota.lib.js.git"},"scripts":{"build":"gulp","test":"mocha"},"version":"0.4.6"}
 
-<<<<<<< HEAD
-=======
-/***/ }),
-/* 140 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = __webpack_require__(1);
-
-var _react2 = _interopRequireDefault(_react);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var UserNameSet = function (_Component) {
-    _inherits(UserNameSet, _Component);
-
-    function UserNameSet(props) {
-        _classCallCheck(this, UserNameSet);
-
-        var _this = _possibleConstructorReturn(this, (UserNameSet.__proto__ || Object.getPrototypeOf(UserNameSet)).call(this, props));
-
-        _this.mam = "";
-        _this.iotajs = "";
-        _this.mamstate = "";
-        _this.init = false;
-        _this.state = { value: '', address: '', fetch: '', message: '' };
-
-        _this.handleChange = _this.handleChange.bind(_this);
-        _this.handleSubmit = _this.handleSubmit.bind(_this);
-        _this.handleFetch = _this.handleFetch.bind(_this);
-        _this.send = _this.send.bind(_this);
-        return _this;
-    }
-
-    _createClass(UserNameSet, [{
-        key: "handleChange",
-        value: function handleChange(event) {
-            this.setState(_defineProperty({}, event.target.name, event.target.value));
-        }
-    }, {
-        key: "handleSubmit",
-        value: function handleSubmit(event) {
-            event.preventDefault();
-            this.send();
-        }
-    }, {
-        key: "handleFetch",
-        value: function handleFetch(event) {
-            event.preventDefault();
-            this.fetch();
-        }
-    }, {
-        key: "send",
-        value: function send() {
-            window.MyVars = {
-                username: this.state.value
-            };
-            console.log(window);
-        }
-    }, {
-        key: "componentDidMount",
-        value: function componentDidMount() {
-            var IOTA = __webpack_require__(52);
-            this.iotajs = new IOTA({ provider: "https://testnet140.tangle.works:443/" });
-        }
-    }, {
-        key: "render",
-        value: function render() {
-
-            return _react2.default.createElement(
-                "div",
-                { className: "App" },
-                _react2.default.createElement(
-                    "header",
-                    { className: "App-header" },
-                    _react2.default.createElement(
-                        "h1",
-                        { className: "App-title" },
-                        "Welcome to the IOTA MAM encrypter and decrypter"
-                    )
-                ),
-                _react2.default.createElement("br", null),
-                _react2.default.createElement("br", null),
-                _react2.default.createElement("br", null),
-                _react2.default.createElement(
-                    "form",
-                    { onSubmit: this.handleSubmit },
-                    _react2.default.createElement(
-                        "label",
-                        null,
-                        "Message:",
-                        _react2.default.createElement("input", { type: "text", name: "value", value: this.state.value, onChange: this.handleChange })
-                    ),
-                    _react2.default.createElement("input", { type: "submit", value: "Submit" })
-                )
-            );
-        }
-    }]);
-
-    return UserNameSet;
-}(_react.Component);
-
-exports.default = UserNameSet;
-
->>>>>>> a0246900c619f611cb0a1f004dd007c9c8e9462f
 /***/ })
 /******/ ]);
