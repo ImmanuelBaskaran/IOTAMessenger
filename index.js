@@ -35063,7 +35063,7 @@ var UserNameSet = function (_Component) {
                 username: this.state.value
             };
             window.mode = 'public';
-            window.mamstate = window.Mam.init(window.iota, "AJGCFUNURGYBEILHQGYYFGZUAEFDBYNBLJNNGBILLGBJNWEWNLJGLVXLZVZFG9MAXMLLRWYQSVOZFWZXX");
+            window.mamstate = window.Mam.init(window.iota, "AJGCFUNURGYBEILHQGYYFGZUAEFDBYNILJNNGBILLGBJNWEWNLJGLVXLZVZFG9MAXMLLRWYQSVOZFWZXX");
             // window.mamstate = window.Mam.init(window.iota);
 
             if (!(this.state.key.trim() === "")) {
