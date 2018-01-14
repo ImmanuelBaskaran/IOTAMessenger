@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Link from 'react-router'
 
 
 class Messenger extends Component {
@@ -106,12 +107,14 @@ class Messenger extends Component {
                         <input type="text" name= "value" value={this.state.value} onChange={this.handleChange} required/>
                     </label>
                     <input type="submit" value="Submit" />
+
                 </form>
                 <div class="messageBox">
                     {this.state.message.map((person, index) => (
                         <p>{person}</p>
                     ))}
                 </div>
+
             </div>
         );
     }

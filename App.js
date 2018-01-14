@@ -23,8 +23,12 @@ class App extends Component {
                 <div>
 
                     <div class="nav">
-                        <p>pBy Immanuel Baskeran & Tim Clarkson</p>
+                        <p>By Immanuel Baskeran & Tim Clarkson</p>
+                        <a><Link to={'/room'}>Go To Room</Link></a>
                     </div>
+                    <header className="App-header">
+                        <h1 className="App-title">Welcome to the IOTA MAM encrypter and decrypter</h1>
+                    </header>
 
                     <div class="container">
                         <Switch>
