@@ -37,7 +37,7 @@ class UserNameSet extends Component {
             username:this.state.value,
         };
         window.mode = 'public'
-        window.mamstate = window.Mam.init(window.iota,"AJGCFUNURGYBEILHQGYYFGZUAEFDBYNBLJNNGBILLGBJNWEWNLJPLVXLZVZFG9MAXMLLRWYQSVOZFWZXX");
+        window.mamstate = window.Mam.init(window.iota,"AJGCFUNURGYBEILHQGYYFGZUAEFDBYNBLJNNGBILLGBJNWEWNLJGLVXLZVZFG9MAXMLLRWYQSVOZFWZXX");
        // window.mamstate = window.Mam.init(window.iota);
 
         if(!(this.state.key.trim() === "")){

@@ -34871,7 +34871,7 @@ var Messenger = function (_Component) {
             this.sending = false;
             this.setState(this.setState({ address: message.root }));
             console.log(window.mamstate);
-            this.fetch2();
+            // this.fetch2();
             if (p === "Temperature") {
                 console.log(p);
                 var temperature = Math.floor(20 + Math.random() * 5);
@@ -35063,7 +35063,7 @@ var UserNameSet = function (_Component) {
                 username: this.state.value
             };
             window.mode = 'public';
-            window.mamstate = window.Mam.init(window.iota, "AJGCFUNURGYBEILHQGYYFGZUAEFDBYNBLJNNGBILLGBJNWEWNLJPLVXLZVZFG9MAXMLLRWYQSVOZFWZXX");
+            window.mamstate = window.Mam.init(window.iota, "AJGCFUNURGYBEILHQGYYFGZUAEFDBYNBLJNNGBILLGBJNWEWNLJGLVXLZVZFG9MAXMLLRWYQSVOZFWZXX");
             // window.mamstate = window.Mam.init(window.iota);
 
             if (!(this.state.key.trim() === "")) {
