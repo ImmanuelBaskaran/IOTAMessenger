@@ -34729,13 +34729,14 @@ var App = function (_Component) {
                             'By Immanuel Baskeran & Tim Clarkson'
                         ),
                         _react2.default.createElement(
-                            'a',
-                            null,
-                            _react2.default.createElement(
-                                _reactRouterDom.Link,
-                                { to: '/room' },
-                                'Go To Room'
-                            )
+                            _reactRouterDom.Link,
+                            { to: '/room' },
+                            'Go To Room'
+                        ),
+                        _react2.default.createElement(
+                            _reactRouterDom.Link,
+                            { to: '/' },
+                            'Set Username'
                         )
                     ),
                     _react2.default.createElement(
