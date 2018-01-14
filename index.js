@@ -34724,22 +34724,15 @@ var App = function (_Component) {
                         'div',
                         { 'class': 'nav' },
                         _react2.default.createElement(
-                            'a',
-                            null,
-                            _react2.default.createElement(
-                                _reactRouterDom.Link,
-                                { to: '/' },
-                                'Home'
-                            )
+                            _reactRouterDom.Link,
+                            { to: '/' },
+                            'Home'
                         ),
+                        's',
                         _react2.default.createElement(
-                            'a',
-                            null,
-                            _react2.default.createElement(
-                                _reactRouterDom.Link,
-                                { to: '/room' },
-                                'App'
-                            )
+                            _reactRouterDom.Link,
+                            { to: '/room' },
+                            'App'
                         )
                     ),
                     _react2.default.createElement(
@@ -34748,7 +34741,7 @@ var App = function (_Component) {
                         _react2.default.createElement(
                             'h1',
                             { className: 'App-title' },
-                            'Welcome to the IOTA MAM encrypter and decrypter'
+                            'Welcome to the IOTA MAM Messenger'
                         )
                     ),
                     _react2.default.createElement(
@@ -34756,7 +34749,8 @@ var App = function (_Component) {
                         null,
                         _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/', component: _UserNameSet2.default }),
                         _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/room', component: _Messenger2.default })
-                    )
+                    ),
+                    _react2.default.createElement('div', { 'class': 'footer' })
                 )
             );
         }
@@ -34850,6 +34844,8 @@ var Messenger = function (_Component) {
                 this.init = true;
             }
             var packet = this.state.value;
+            var p = packet;
+
             packet = window.MyVars.username + ":" + packet;
             var trytes = window.iota.utils.toTrytes(JSON.stringify(packet));
             var message = this.mam.create(this.mamstate, trytes);
@@ -34860,6 +34856,20 @@ var Messenger = function (_Component) {
             this.setState(this.setState({ address: message.root }));
             console.log(window.mamstate);
             this.fetch2();
+            if (p === "Temperature") {
+                console.log(p);
+                var temperature = Math.floor(20 + Math.random() * 5);
+                var temp = this.state.message + "Degrees";
+                temp.push(temperature);
+                this.setState({ message: temp });
+            }
+            if (p === "Weather") {
+                console.log(p);
+                var _temperature = "Cloudy";
+                var _temp = this.state.message;
+                _temp.push(_temperature);
+                this.setState({ message: _temp });
+            }
         }
     }, {
         key: "fetch2",
@@ -35009,6 +35019,7 @@ var UserNameSet = function (_Component) {
 
             window.mamIndex = window.Mam.getRoot(window.mamstate);
             console.log(window.mamstate);
+            window.alert("Ready");
         }
     }, {
         key: "componentDidMount",
@@ -35038,12 +35049,6 @@ var UserNameSet = function (_Component) {
                         null,
                         "Username:",
                         _react2.default.createElement("input", { type: "text", name: "value", value: this.state.value, onChange: this.handleChange, required: true })
-                    ),
-                    _react2.default.createElement(
-                        "label",
-                        null,
-                        "Username:",
-                        _react2.default.createElement("input", { type: "text", name: "key", value: this.state.key, onChange: this.handleChange })
                     ),
                     _react2.default.createElement("input", { type: "submit", value: "Submit" })
                 )

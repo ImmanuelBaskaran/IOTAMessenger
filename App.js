@@ -25,7 +25,7 @@ class App extends Component {
                         <Link to={'/room'}>App</Link>
                     </div>
                     <header className="App-header">
-                        <h1 className="App-title">Welcome to the IOTA MAM encrypter and decrypter</h1>
+                        <h1 className="App-title">Welcome to the IOTA MAM Messenger</h1>
                     </header>
                     <Switch>
                         <Route exact path='/' component={UserNameSet} />

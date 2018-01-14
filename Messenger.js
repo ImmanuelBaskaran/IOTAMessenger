@@ -46,16 +46,33 @@ class Messenger extends Component {
             this.init = true;
         }
         let packet = this.state.value;
-        packet = window.MyVars.username+":"+packet;
-        let trytes = window.iota.utils.toTrytes(JSON.stringify(packet));
-        let message = this.mam.create(this.mamstate, trytes);
-        this.mamstate = message.state;
-        this.sending = true;
-        await this.mam.attach(message.payload, message.address);
-        this.sending = false;
-        this.setState(this.setState({address: message.root}));
-        console.log(window.mamstate)
-        this.fetch2();
+        let p = packet;
+
+            packet = window.MyVars.username + ":" + packet;
+            let trytes = window.iota.utils.toTrytes(JSON.stringify(packet));
+            let message = this.mam.create(this.mamstate, trytes);
+            this.mamstate = message.state;
+            this.sending = true;
+            await this.mam.attach(message.payload, message.address);
+            this.sending = false;
+            this.setState(this.setState({address: message.root}));
+            console.log(window.mamstate)
+            this.fetch2();
+        if(p==="Temperature"){
+            console.log(p);
+            let temperature = Math.floor(20+(Math.random()*5));
+            let temp  = this.state.message+"Degrees";
+            temp.push(temperature);
+            this.setState({message: temp});
+        }
+        if(p==="Weather"){
+            console.log(p);
+            let temperature = "Cloudy";
+            let temp  = this.state.message;
+            temp.push(temperature);
+            this.setState({message: temp});
+        }
+
     }
     async fetch2(){
         let resp = await window.Mam.fetch(window.mamIndex, window.mode);

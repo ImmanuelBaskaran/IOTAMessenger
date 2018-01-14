@@ -53,6 +53,7 @@ class UserNameSet extends Component {
 
         window.mamIndex = window.Mam.getRoot(window.mamstate);
         console.log(window.mamstate);
+        window.alert("Ready");
     }
 
 
@@ -79,10 +80,7 @@ class UserNameSet extends Component {
                         Username:
                         <input type="text" name= "value" value={this.state.value} onChange={this.handleChange} required/>
                     </label>
-                    <label>
-                        Username:
-                        <input type="text" name= "key" value={this.state.key} onChange={this.handleChange} />
-                    </label>
+
                     <input type="submit" value="Submit" />
                 </form>
             </div>
