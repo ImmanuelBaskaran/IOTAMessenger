@@ -61,7 +61,7 @@ class Messenger extends Component {
         if(p==="Temperature"){
             console.log(p);
             let temperature = Math.floor(20+(Math.random()*5));
-            let temp  = this.state.message+"Degrees";
+            let temp  = this.state.message;
             temp.push(temperature);
             this.setState({message: temp});
         }

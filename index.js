@@ -34859,7 +34859,7 @@ var Messenger = function (_Component) {
             if (p === "Temperature") {
                 console.log(p);
                 var temperature = Math.floor(20 + Math.random() * 5);
-                var temp = this.state.message + "Degrees";
+                var temp = this.state.message;
                 temp.push(temperature);
                 this.setState({ message: temp });
             }
