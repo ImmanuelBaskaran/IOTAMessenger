@@ -34905,7 +34905,7 @@ var Messenger = function (_Component) {
             this.state.fetch = window.mamIndex;
             console.log("Mount");
             this.fetch2();
-            //   setInterval(this.repeatedFetch.bind(this), 2000);
+            setInterval(this.repeatedFetch.bind(this), 30000);
         }
     }, {
         key: 'render',

@@ -57,7 +57,7 @@ class Messenger extends Component {
             await this.mam.attach(message.payload, message.address);
             this.sending = false;
             this.setState(this.setState({address: message.root}));
-            console.log(window.mamstate)
+            console.log(window.mamstate);
             this.fetch2();
         if(p==="Temperature"){
             console.log(p);
@@ -88,7 +88,7 @@ class Messenger extends Component {
         this.state.fetch = window.mamIndex;
         console.log("Mount");
         this.fetch2();
-     //   setInterval(this.repeatedFetch.bind(this), 2000);
+        setInterval(this.repeatedFetch.bind(this), 30000);
     }
 
 
