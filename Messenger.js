@@ -46,19 +46,36 @@ class Messenger extends Component {
             this.init = true;
         }
         let packet = this.state.value;
-        let trytes = window.iota.utils.toTrytes(JSON.stringify(packet));
-        let message = this.mam.create(this.mamstate, trytes);
-        this.mamstate = message.state;
-        this.sending = true;
-        await this.mam.attach(message.payload, message.address);
-        this.sending = false;
-        this.setState(this.setState({address: message.root}));
-        console.log(window.mamstate)
-        this.fetch2();
+        let p = packet;
+
+            packet = window.MyVars.username + ":" + packet;
+            let trytes = window.iota.utils.toTrytes(JSON.stringify(packet));
+            let message = this.mam.create(this.mamstate, trytes);
+            this.mamstate = message.state;
+            this.sending = true;
+            await this.mam.attach(message.payload, message.address);
+            this.sending = false;
+            this.setState(this.setState({address: message.root}));
+            console.log(window.mamstate)
+            this.fetch2();
+        if(p==="Temperature"){
+            console.log(p);
+            let temperature = Math.floor(20+(Math.random()*5));
+            let temp  = this.state.message;
+            temp.push(temperature);
+            this.setState({message: temp});
+        }
+        if(p==="Weather"){
+            console.log(p);
+            let temperature = "Cloudy";
+            let temp  = this.state.message;
+            temp.push(temperature);
+            this.setState({message: temp});
+        }
+
     }
     async fetch2(){
-        let resp = await window.Mam.fetch(window.mamIndex, 'public');
-        let text = (window.iota.utils.fromTrytes(resp.messages[0]));
+        let resp = await window.Mam.fetch(window.mamIndex, window.mode);
         const mappingFunction = p => window.iota.utils.fromTrytes(p);
         let usersmessages = resp.messages.map(mappingFunction);
         console.log(usersmessages);
@@ -80,9 +97,6 @@ class Messenger extends Component {
 
         return (
             <div className="App">
-                <header className="App-header">
-                    <h1 className="App-title">Welcome to the IOTA MAM encrypter and decrypter</h1>
-                </header>
                 <br/>
                 <br/>
                 <br/>
@@ -93,10 +107,11 @@ class Messenger extends Component {
                     </label>
                     <input type="submit" value="Submit" />
                 </form>
+                <div class="messageBox">
                     {this.state.message.map((person, index) => (
                         <p>{person}</p>
                     ))}
-
+                </div>
             </div>
         );
     }

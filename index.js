@@ -34724,6 +34724,7 @@ var App = function (_Component) {
                         'div',
                         { 'class': 'nav' },
                         _react2.default.createElement(
+<<<<<<< HEAD
                             'p',
                             null,
                             'pBy Immanuel Baskeran & Tim Clarkson'
@@ -34744,6 +34745,35 @@ var App = function (_Component) {
                             'By Immanuel Baskeran & Tim Clarkson'
                         )
                     )
+=======
+                            _reactRouterDom.Link,
+                            { to: '/' },
+                            'Home'
+                        ),
+                        's',
+                        _react2.default.createElement(
+                            _reactRouterDom.Link,
+                            { to: '/room' },
+                            'App'
+                        )
+                    ),
+                    _react2.default.createElement(
+                        'header',
+                        { className: 'App-header' },
+                        _react2.default.createElement(
+                            'h1',
+                            { className: 'App-title' },
+                            'Welcome to the IOTA MAM Messenger'
+                        )
+                    ),
+                    _react2.default.createElement(
+                        _reactRouterDom.Switch,
+                        null,
+                        _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/', component: _UserNameSet2.default }),
+                        _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/room', component: _Messenger2.default })
+                    ),
+                    _react2.default.createElement('div', { 'class': 'footer' })
+>>>>>>> 331d5c2e75301c0818f6009923e8c9c811fbe46f
                 )
             );
         }
@@ -34837,6 +34867,9 @@ var Messenger = function (_Component) {
                 this.init = true;
             }
             var packet = this.state.value;
+            var p = packet;
+
+            packet = window.MyVars.username + ":" + packet;
             var trytes = window.iota.utils.toTrytes(JSON.stringify(packet));
             var message = this.mam.create(this.mamstate, trytes);
             this.mamstate = message.state;
@@ -34846,12 +34879,25 @@ var Messenger = function (_Component) {
             this.setState(this.setState({ address: message.root }));
             console.log(window.mamstate);
             this.fetch2();
+            if (p === "Temperature") {
+                console.log(p);
+                var temperature = Math.floor(20 + Math.random() * 5);
+                var temp = this.state.message;
+                temp.push(temperature);
+                this.setState({ message: temp });
+            }
+            if (p === "Weather") {
+                console.log(p);
+                var _temperature = "Cloudy";
+                var _temp = this.state.message;
+                _temp.push(_temperature);
+                this.setState({ message: _temp });
+            }
         }
     }, {
         key: "fetch2",
         value: async function fetch2() {
-            var resp = await window.Mam.fetch(window.mamIndex, 'public');
-            var text = window.iota.utils.fromTrytes(resp.messages[0]);
+            var resp = await window.Mam.fetch(window.mamIndex, window.mode);
             var mappingFunction = function mappingFunction(p) {
                 return window.iota.utils.fromTrytes(p);
             };
@@ -34875,15 +34921,6 @@ var Messenger = function (_Component) {
             return _react2.default.createElement(
                 "div",
                 { className: "App" },
-                _react2.default.createElement(
-                    "header",
-                    { className: "App-header" },
-                    _react2.default.createElement(
-                        "h1",
-                        { className: "App-title" },
-                        "Welcome to the IOTA MAM encrypter and decrypter"
-                    )
-                ),
                 _react2.default.createElement("br", null),
                 _react2.default.createElement("br", null),
                 _react2.default.createElement("br", null),
@@ -34898,13 +34935,17 @@ var Messenger = function (_Component) {
                     ),
                     _react2.default.createElement("input", { type: "submit", value: "Submit" })
                 ),
-                this.state.message.map(function (person, index) {
-                    return _react2.default.createElement(
-                        "p",
-                        null,
-                        person
-                    );
-                })
+                _react2.default.createElement(
+                    "div",
+                    { "class": "messageBox" },
+                    this.state.message.map(function (person, index) {
+                        return _react2.default.createElement(
+                            "p",
+                            null,
+                            person
+                        );
+                    })
+                )
             );
         }
     }]);
@@ -34985,13 +35026,23 @@ var UserNameSet = function (_Component) {
             window.MyVars = {
                 username: this.state.value
             };
+            window.mode = 'public';
             window.mamstate = window.Mam.init(window.iota, "AJGCFUNURGYBEILHQGZYFGZUAEFDBYNBLJNNGBILLGBJNWEWNLJPLVXLZVZFG9MAXMLLRWYQSVOZFWZXX");
             // window.mamstate = window.Mam.init(window.iota);
+
+            if (!(this.state.key.trim() === "")) {
+                console.log("AsCram");
+                window.mode = 'restricted';
+                window.mamstate = window.Mam.changeMode(window.mamstate, window.mode, this.state.key);
+            }
+
             var packet = "";
             var trytes = this.iotajs.utils.toTrytes(JSON.stringify(packet));
             var message = window.Mam.create(window.mamstate, trytes);
+
             window.mamIndex = window.Mam.getRoot(window.mamstate);
             console.log(window.mamstate);
+            window.alert("Ready");
         }
     }, {
         key: "componentDidMount",
@@ -35010,15 +35061,6 @@ var UserNameSet = function (_Component) {
             return _react2.default.createElement(
                 "div",
                 { className: "App" },
-                _react2.default.createElement(
-                    "header",
-                    { className: "App-header" },
-                    _react2.default.createElement(
-                        "h1",
-                        { className: "App-title" },
-                        "Welcome to the IOTA MAM encrypter and decrypter"
-                    )
-                ),
                 _react2.default.createElement("br", null),
                 _react2.default.createElement("br", null),
                 _react2.default.createElement("br", null),
@@ -35029,13 +35071,7 @@ var UserNameSet = function (_Component) {
                         "label",
                         null,
                         "Username:",
-                        _react2.default.createElement("input", { type: "text", name: "value", value: this.state.value, onChange: this.handleChange })
-                    ),
-                    _react2.default.createElement(
-                        "label",
-                        null,
-                        "Username:",
-                        _react2.default.createElement("input", { type: "text", name: "key", value: this.state.key, onChange: this.handleChange })
+                        _react2.default.createElement("input", { type: "text", name: "value", value: this.state.value, onChange: this.handleChange, required: true })
                     ),
                     _react2.default.createElement("input", { type: "submit", value: "Submit" })
                 )
@@ -44874,7 +44910,11 @@ module.exports = Address;
 /* 140 */
 /***/ (function(module, exports) {
 
+<<<<<<< HEAD
 module.exports = {"_args":[["iota.lib.js@0.4.6","C:\\Users\\clark\\Documents\\GitHub\\IOTAMessenger"]],"_from":"iota.lib.js@0.4.6","_id":"iota.lib.js@0.4.6","_inBundle":false,"_integrity":"sha1-R6/cA9V8f1XS9Y8GjbSS32vG6bs=","_location":"/iota.lib.js","_phantomChildren":{},"_requested":{"type":"version","registry":true,"raw":"iota.lib.js@0.4.6","name":"iota.lib.js","escapedName":"iota.lib.js","rawSpec":"0.4.6","saveSpec":null,"fetchSpec":"0.4.6"},"_requiredBy":["/"],"_resolved":"https://registry.npmjs.org/iota.lib.js/-/iota.lib.js-0.4.6.tgz","_spec":"0.4.6","_where":"C:\\Users\\clark\\Documents\\GitHub\\IOTAMessenger","author":{"name":"Dominik Schiener","url":"IOTA Foundation"},"bugs":{"url":"https://github.com/iotaledger/iota.lib.js/issues"},"dependencies":{"async":"^2.5.0","bignumber.js":"^4.1.0","crypto-js":"^3.1.9-1","xmlhttprequest":"^1.8.0"},"description":"Javascript Library for IOTA","devDependencies":{"bower":">=1.8.0","browserify":">=14.1.0","chai":"^4.0.2","del":"^3.0.0","gulp":"^3.9.1","gulp-jshint":"^2.0.2","gulp-nsp":">=2.4.2","gulp-rename":">=1.2.2","gulp-replace":"^0.6.1","gulp-uglify":"^3.0.0","jshint":"^2.9.4","mocha":"^3.2.0","vinyl-buffer":"^1.0.0","vinyl-source-stream":"^1.1.0"},"homepage":"https://github.com/iotaledger/iota.lib.js#readme","keywords":["iota","tangle","library","browser","javascript","nodejs","API"],"license":"MIT","main":"./lib/iota.js","name":"iota.lib.js","repository":{"type":"git","url":"git+https://github.com/iotaledger/iota.lib.js.git"},"scripts":{"build":"gulp","test":"mocha"},"version":"0.4.6"}
+=======
+module.exports = {"_from":"iota.lib.js","_id":"iota.lib.js@0.4.6","_inBundle":false,"_integrity":"sha1-R6/cA9V8f1XS9Y8GjbSS32vG6bs=","_location":"/iota.lib.js","_phantomChildren":{},"_requested":{"type":"tag","registry":true,"raw":"iota.lib.js","name":"iota.lib.js","escapedName":"iota.lib.js","rawSpec":"","saveSpec":null,"fetchSpec":"latest"},"_requiredBy":["#USER","/"],"_resolved":"https://registry.npmjs.org/iota.lib.js/-/iota.lib.js-0.4.6.tgz","_shasum":"47afdc03d57c7f55d2f58f068db492df6bc6e9bb","_spec":"iota.lib.js","_where":"D:\\Documents\\GitHub\\IOTA-Mam-POC","author":{"name":"Dominik Schiener","url":"IOTA Foundation"},"bugs":{"url":"https://github.com/iotaledger/iota.lib.js/issues"},"bundleDependencies":false,"dependencies":{"async":"^2.5.0","bignumber.js":"^4.1.0","crypto-js":"^3.1.9-1","xmlhttprequest":"^1.8.0"},"deprecated":false,"description":"Javascript Library for IOTA","devDependencies":{"bower":">=1.8.0","browserify":">=14.1.0","chai":"^4.0.2","del":"^3.0.0","gulp":"^3.9.1","gulp-jshint":"^2.0.2","gulp-nsp":">=2.4.2","gulp-rename":">=1.2.2","gulp-replace":"^0.6.1","gulp-uglify":"^3.0.0","jshint":"^2.9.4","mocha":"^3.2.0","vinyl-buffer":"^1.0.0","vinyl-source-stream":"^1.1.0"},"homepage":"https://github.com/iotaledger/iota.lib.js#readme","keywords":["iota","tangle","library","browser","javascript","nodejs","API"],"license":"MIT","main":"./lib/iota.js","name":"iota.lib.js","repository":{"type":"git","url":"git+https://github.com/iotaledger/iota.lib.js.git"},"scripts":{"build":"gulp","test":"mocha"},"version":"0.4.6"}
+>>>>>>> 331d5c2e75301c0818f6009923e8c9c811fbe46f
 
 /***/ })
 /******/ ]);

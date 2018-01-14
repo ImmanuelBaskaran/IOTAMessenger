@@ -21,9 +21,11 @@ class App extends Component {
             <Router>
 
                 <div>
+
                     <div class="nav">
                         <p>pBy Immanuel Baskeran & Tim Clarkson</p>
                     </div>
+
                     <div class="container">
                         <Switch>
                             <Route exact path='/' component={UserNameSet} />
@@ -31,6 +33,7 @@ class App extends Component {
                         </Switch>
                         <div class="footer">By Immanuel Baskeran & Tim Clarkson</div>
                     </div>
+
 
                 </div>
             </Router>
